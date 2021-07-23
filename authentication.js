@@ -7,6 +7,7 @@ function showNews(qSelector) {
     const year = dateObj.getFullYear();
     const response = await fetch(`https://newsapi.org/v2/everything?q=+${query}&from=${year}-${month}-${date}&language=en&sortBy=relevancy&apiKey=0ba00dda79bc413c833611d903ac4468`);
     const json = await response.json();
+    alert("Whats wrong?);
     return json;
   }
   if (qSelector.selectedIndex === 0) {

@@ -7,6 +7,7 @@ function showNews(qSelector) {
     const year = dateObj.getFullYear();
     const response = await fetch(`https://newsapi.org/v2/everything?q=+${query}&from=${year}-${month}-${date}&language=en&sortBy=relevancy&apiKey=0ba00dda79bc413c833611d903ac4468`);
     const json = await response.json();
+    alert("Returning JSON") //
     return json;
   }
   if (qSelector.selectedIndex === 0) {
@@ -15,7 +16,8 @@ function showNews(qSelector) {
     getNews(qSelector.value);
   }
   getNews().then(json => {
-    newsObjs = json.articles;
+    alert("Fetched")
+newsObjs = json.articles;
     let cardsDiv = document.querySelector("#newscards-div");
     for (let i = 0; i < json.articles.length; i++) {
       let card = `<div id="${i}" class="card">

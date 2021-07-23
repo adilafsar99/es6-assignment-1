@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>ES6 Assignment 1 - News API - News Page</title>
+  <link rel="stylesheet" href="bootstrap.min.css" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container mt-5">
+    <div id="nav-div">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">News Site</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a id="account-link" class="nav-link d-none" href="#">My Account</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a id="signup-link" class="nav-link active" href="JavaScript:void(0)" data-bs-toggle="modal" data-bs-target="#signupModal">Sign up</a>
+              </li>
+              <li id="login-link-item" class="nav-item">
+                <a id="login-link" class="nav-link active" href="JavaScript:void(0)" data-bs-toggle="modal" data-bs-target="#loginModal">Log in</a>
+              </li>
+            </ul>
+             <form class="d-flex">
+              <select id="q-selector" class="form-select">
+                <option selected>Choose a topic</option>
+                <option value="pakistan">Pakistan</option>
+                <option value="cricket">Cricket</option>
+                <option value="international">International</option>
+                <option value="business">Business</option>
+              </select>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Sign Up Modal Start -->
+    <div class="modal fade" id="signupModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticModalLabel">Sign Up</h5>
+            <button type="button" class="btn-close" id="signup-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-floating mb-2">
+              <input type="text" class="form-control" id="floatingInput" name="name" placeholder="Enter Name">
+              <label for="floatingInput">Enter Name</label>
+            </div>
+            <div id="name-message" class="d-flex-column  bg-secondary text-white rounded">
+              <p class="m-0">
+                &nbsp;• No numbers
+              </p>
+              <p class="m-0">
+                &nbsp;• At least 3 characters
+              </p>
+              <p class="m-0">
+                &nbsp;• At most 30 characters
+              </p>
+            </div>
+            <div class="form-floating mt-2 mb-2">
+              <input type="email" class="form-control" id="floatingInput" name="email" placeholder="Enter Email">
+              <label for="floatingInput">Enter Email</label>
+            </div>
+            <div id="email-message" class="d-flex-column  bg-secondary text-white rounded">
+              <p class="m-0">
+                &nbsp;• No spaces
+              </p>
+              <p class="m-0">
+                &nbsp;• No special characters
+              </p>
+            </div>
+            <div class="form-floating mt-2 mb-2">
+              <input type="password" class="form-control" id="floatingInput" name="password" placeholder="Enter Password">
+              <label for="floatingInput">Enter Password</label>
+            </div>
+            <div id="password-message" class="d-flex-column  bg-secondary text-white rounded">
+              <p class="m-0">
+                &nbsp;• No spaces
+              </p>
+              <p class="m-0">
+                &nbsp;• Both digits and alphabets
+              </p>
+              <p class="m-0">
+                &nbsp;• At least 1 alphabet
+              </p>
+              <p class="m-0">
+                &nbsp;• At least 7 character
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="signup-btn" class="btn btn-dark modal-btn">Sign up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sign Up Modal End -->
+
+    <!-- Log In Modal Start -->
+    <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticModalLabel">Log in</h5>
+            <button type="button" class="btn-close" id="login-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-floating mb-2">
+              <input type="email" class="form-control" id="floatingInput" placeholder="Enter Email">
+              <label for="floatingInput">Enter Email</label>
+            </div>
+            <div id="login-email-message" class="d-none">
+              <p class="text-danger">
+                Email not found!
+              </p>
+            </div>
+            <div class="form-floating mb-2">
+              <input type="password" class="form-control" id="floatingInput" placeholder="Enter Password">
+              <label for="floatingInput">Enter Password</label>
+            </div>
+            <div id="login-password-message" class="d-none">
+              <p class="text-danger">
+                Incorrect Password!
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="login-btn" class="btn btn-dark modal-btn">Log in</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Log In Modal End -->
+
+    <div id="news-div" class="mt-4">
+      
+    </div>
+    
+    <div class="border-dark">
+      <hr class="mt-0">
+    </div>
+    <div id="comments-section-div">
+      <div id="heading-div" class="text-center">
+        <h1 id="heading">Comments</h1>
+      </div>
+      <div class="form-floating mb-2">
+        <textarea class="form-control" placeholder="Leave a comment here" name="comment-field" id="floatingTextarea" style="height: 100px"></textarea>
+        <label for="floatingTextarea">Comments</label>
+      </div>
+      <div id="post-btn-div" class="d-flex w-100 justify-content-center mb-2">
+        <button id="post-btn" class="btn btn-dark">Post</button>
+      </div>
+      <div class="border-dark">
+        <hr class="mt-0">
+      </div>
+      <div id="comments-div">
+
+      </div>
+    </div>
+  </div>
+  <footer id="footer" class="d-flex-column bg-dark text-white text-center">
+    <hr class="mt-0">
+    <div class="text-center">
+      <h4>Links</h4>
+      <ul class="list-unstyled list-inline m-0">
+        <li class="list-inline-item">
+          <a href="#" class="sbtn btn-large mx-1" title="Facebook">
+            <i class="fab fa-facebook-square fa-2x"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#" class="sbtn btn-large mx-1" title="Twitter">
+            <i class="fab fa-twitter-square fa-2x"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="#" class="sbtn btn-large mx-1" title="Youtube">
+            <i class="fab fa-youtube-square fa-2x"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="py-3 text-center">
+      By Muhammad Adil
+      | Dummy News Site
+    </div>
+  </footer>
+  <script src="authentication.js"></script>
+  <script src="newsPage.js"></script>
+  <script src="bootstrap.min.js"></script>
+</body>
+</html>

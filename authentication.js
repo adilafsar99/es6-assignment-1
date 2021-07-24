@@ -8,11 +8,11 @@ function showNews(qSelector) {
     const q = `https://newsapi.org/v2/everything?q=+${query}&from=${year}-${month}-${date}&language=en&sortBy=relevancy&apiKey=0ba00dda79bc413c833611d903ac4468`;
     const response = await fetch(q);
     const json = await response.json();
+    alert(q, "inside get")
     return json;
   }
   let query; //Default query
   if (qSelector.selectedIndex !== 0) {
-
     query = qSelector.value;
   }
   getNews(query).then(json => {
